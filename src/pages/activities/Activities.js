@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, CircularProgress } from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
 import { API_URL } from "../../constant";
 
 // components
 import PageTitle from "../../components/PageTitle";
-import Widget from "../../components/Widget";
-import Table from "../dashboard/components/Table/Table";
 
 export default function Activities() {
   const [activities, setActivities] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const columns = [
     {
       name: "id",
@@ -56,8 +55,10 @@ export default function Activities() {
     selectableRowsHeader: false,
     onRowClick: rowData => console.log(rowData),
   };
+
   useEffect(() => {
     let token = localStorage.getItem("token");
+    setIsLoading(true);
     fetch(API_URL + "activities", {
       method: "GET",
       headers: {
@@ -67,6 +68,7 @@ export default function Activities() {
     })
       .then(response => response.json())
       .then(response => {
+        setIsLoading(false);
         setActivities(cleanArray(response.activities));
       })
       .catch(e => {
@@ -93,13 +95,17 @@ export default function Activities() {
     <>
       <PageTitle title="Activitées" />
       <Grid container spacing={4}>
-        <Grid item xs={12}>
-          <MUIDataTable
-            title="Liste des activités"
-            data={activities}
-            columns={columns}
-            options={options}
-          />
+        <Grid item xs={12} justify="center" alignItems="center">
+          {isLoading ? (
+            <CircularProgress size={52} />
+          ) : (
+            <MUIDataTable
+              title="Liste des activités"
+              data={activities}
+              columns={columns}
+              options={options}
+            />
+          )}
         </Grid>
       </Grid>
     </>
