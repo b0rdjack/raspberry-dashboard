@@ -5,10 +5,12 @@ import { API_URL } from "../../constant";
 
 // components
 import PageTitle from "../../components/PageTitle";
+import { useHistory } from "react-router-dom";
 
 export default function Activities() {
   const [activities, setActivities] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const history = useHistory();
   const columns = [
     {
       name: "id",
@@ -53,7 +55,7 @@ export default function Activities() {
     print: false,
     selectableRows: "none",
     selectableRowsHeader: false,
-    onRowClick: rowData => console.log(rowData),
+    onRowClick: rowData => history.push("activities/" + rowData[0]),
   };
 
   useEffect(() => {
@@ -69,7 +71,9 @@ export default function Activities() {
       .then(response => response.json())
       .then(response => {
         setIsLoading(false);
-        setActivities(cleanArray(response.activities));
+        if (!response.error) {
+          setActivities(cleanArray(response.activities));
+        }
       })
       .catch(e => {
         console.error(e);
@@ -78,7 +82,7 @@ export default function Activities() {
 
   const cleanArray = activities => {
     let updatedActivities = [];
-    activities.map((activity, index) => {
+    activities.forEach(activity => {
       updatedActivities.push({
         id: activity.id,
         name: activity.name,
@@ -94,8 +98,8 @@ export default function Activities() {
   return (
     <>
       <PageTitle title="Activitées" />
-      <Grid container spacing={4}>
-        <Grid item xs={12} justify="center" alignItems="center">
+      <Grid container spacing={4} justify="center" alignItems="center">
+        <Grid item xs={12}>
           {isLoading ? (
             <CircularProgress size={52} />
           ) : (
