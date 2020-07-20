@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Grid, CircularProgress } from "@material-ui/core";
+import { Grid, CircularProgress, Button } from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
 import { API_URL } from "../../constant";
 
 // components
 import PageTitle from "../../components/PageTitle";
 import { useHistory } from "react-router-dom";
+import { Add as AddIcon } from "@material-ui/icons";
 
 export default function Activities() {
   const [activities, setActivities] = useState([]);
@@ -99,6 +100,20 @@ export default function Activities() {
     <>
       <PageTitle title="Activitées" />
       <Grid container spacing={4} justify="center" alignItems="center">
+        <Grid item xs={3}>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            startIcon={<AddIcon />}
+            onClick={() => {
+              history.push("activities/new");
+            }}
+          >
+            Créer une activité
+          </Button>
+        </Grid>
+        <Grid item xs={9}></Grid>
         <Grid item xs={12}>
           {isLoading ? (
             <CircularProgress size={52} />
