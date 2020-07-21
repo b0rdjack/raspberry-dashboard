@@ -33,6 +33,7 @@ export default function NewActivity() {
       id: "",
       label: "",
     },
+    tags: [],
   });
 
   return (

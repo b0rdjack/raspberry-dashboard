@@ -3,6 +3,7 @@ import { Card, CardContent, CircularProgress } from "@material-ui/core";
 
 import SelectInput from "./SelectInput";
 import { API_URL } from "../../../constant";
+import MultipleSelectInput from "./MultipleSelectInput";
 
 export default function RelationForm({ activity, setActivity }) {
   const [subcategories, setSubcategories] = useState([]);
@@ -43,6 +44,14 @@ export default function RelationForm({ activity, setActivity }) {
     }));
   };
 
+  const onChangeTags = (event, array) => {
+    const { value } = event.target;
+    setActivity(prevState => ({
+      ...prevState,
+      tags: array.filter(item => value.indexOf(item.label) !== -1),
+    }));
+  };
+
   return (
     <>
       <Card>
@@ -66,21 +75,17 @@ export default function RelationForm({ activity, setActivity }) {
                 item_label_key="label"
                 item_value_key="id"
                 message="Veuillez saisir la catégorie"
-                multiple={false}
               />
-              <br />
-              <SelectInput
-                input_label_id="_select_state_label"
-                input_label="État"
-                select_id="_select_state"
-                select_name="state"
-                onChange={onChange}
-                value={activity.state.id}
-                items={states}
-                item_label_key="label"
-                item_value_key="id"
-                message="Veuillez saisir l'état"
-                multiple={false}
+              <MultipleSelectInput
+                input_label_id="_select_tags_label"
+                input_label="Tags"
+                select_id="_select_tags"
+                select_name="tags"
+                onChange={onChangeTags}
+                selected_items={activity.tags}
+                items={tags}
+                item_value_key="label"
+                message="Veuillez saisir au moins un tag"
               />
               <SelectInput
                 input_label_id="_select_quantity_label"
@@ -93,7 +98,18 @@ export default function RelationForm({ activity, setActivity }) {
                 item_label_key="label"
                 item_value_key="id"
                 message="Veuillez saisir la quantité"
-                multiple={false}
+              />
+              <SelectInput
+                input_label_id="_select_state_label"
+                input_label="État"
+                select_id="_select_state"
+                select_name="state"
+                onChange={onChange}
+                value={activity.state.id}
+                items={states}
+                item_label_key="label"
+                item_value_key="id"
+                message="Veuillez saisir l'état"
               />
             </form>
           )}

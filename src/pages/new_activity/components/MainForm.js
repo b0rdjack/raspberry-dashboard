@@ -113,7 +113,6 @@ export default function MainForm({ activity, setActivity }) {
                 item_label_key="code"
                 item_value_key="id"
                 message="Veuillez saisir le code postal"
-                multiple={false}
               />
               <Input
                 autoFocus={false}
