@@ -1,9 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardContent, CircularProgress } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  CircularProgress,
+  TextField,
+} from "@material-ui/core";
 
 import SelectInput from "./SelectInput";
 import { API_URL } from "../../../constant";
 import MultipleSelectInput from "./MultipleSelectInput";
+import NumberFormat from "react-number-format";
+import PropTypes from "prop-types";
+
+function NumberFormatCustom(props) {
+  const { inputRef, onChange, ...other } = props;
+
+  return (
+    <NumberFormat
+      {...other}
+      decimalScale={2}
+      fixedDecimalScale={true}
+      allowNegative={false}
+      allowEmptyFormatting={false}
+      getInputRef={inputRef}
+      suffix="€"
+    />
+  );
+}
+
+NumberFormatCustom.propTypes = {
+  inputRef: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default function RelationForm({ activity, setActivity }) {
   const [subcategories, setSubcategories] = useState([]);
@@ -49,6 +78,16 @@ export default function RelationForm({ activity, setActivity }) {
     setActivity(prevState => ({
       ...prevState,
       tags: array.filter(item => value.indexOf(item.label) !== -1),
+    }));
+  };
+
+  const onChangeAmount = event => {
+    const { value } = event.target;
+    setActivity(prevState => ({
+      ...prevState,
+      price: {
+        amount: value,
+      },
     }));
   };
 
@@ -98,6 +137,21 @@ export default function RelationForm({ activity, setActivity }) {
                 item_label_key="label"
                 item_value_key="id"
                 message="Veuillez saisir la quantité"
+              />
+              <TextField
+                fullWidth={true}
+                id="_amount"
+                label="Montant"
+                margin="normal"
+                name="amount"
+                onChange={onChangeAmount}
+                placeholder="Montant"
+                required={true}
+                value={activity.price.amount}
+                variant="outlined"
+                InputProps={{
+                  inputComponent: NumberFormatCustom,
+                }}
               />
               <SelectInput
                 input_label_id="_select_state_label"

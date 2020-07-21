@@ -34,6 +34,9 @@ export default function NewActivity() {
       label: "",
     },
     tags: [],
+    price: {
+      amount: 0.00,
+    },
   });
 
   return (
