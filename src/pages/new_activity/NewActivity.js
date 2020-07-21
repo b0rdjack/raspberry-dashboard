@@ -1,21 +1,11 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  Card,
-  CardContent,
-  FormControl,
-  FormLabel,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 import { API_URL } from "../../constant";
 
 import PageTitle from "../../components/PageTitle/PageTitle";
-import Input from "./components/Input";
-import TimeInput from "./components/TimeInput";
 import MainForm from "./components/MainForm";
+import RelationForm from "./components/RelationForm";
 
 export default function NewActivity() {
   const [activity, setActivity] = useState({
@@ -27,6 +17,22 @@ export default function NewActivity() {
     closing_hours: "21:30",
     average_time_spent: "00:30",
     disabled_access: "0",
+    postal_code: {
+      id: "",
+      code: "",
+    },
+    subcategory: {
+      id: "",
+      label: "",
+    },
+    state: {
+      id: "",
+      label: "",
+    },
+    quantity: {
+      id: "",
+      label: "",
+    },
   });
 
   return (
@@ -35,6 +41,9 @@ export default function NewActivity() {
       <Grid container spacing={4}>
         <Grid item xs={3}>
           <MainForm activity={activity} setActivity={setActivity} />
+        </Grid>
+        <Grid item xs={3}>
+          <RelationForm activity={activity} setActivity={setActivity} />
         </Grid>
       </Grid>
     </>
