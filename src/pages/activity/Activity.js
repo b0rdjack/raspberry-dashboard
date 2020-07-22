@@ -82,7 +82,6 @@ export default function Activity() {
         setMessage(response.messages[0]);
         if (!response.error) {
           setActivity(response.activity);
-        } else {
         }
         setOpen(true);
       })

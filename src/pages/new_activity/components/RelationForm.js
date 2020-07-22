@@ -23,6 +23,14 @@ function NumberFormatCustom(props) {
       allowNegative={false}
       allowEmptyFormatting={false}
       getInputRef={inputRef}
+      onValueChange={values => {
+        onChange({
+          target: {
+            name: props.name,
+            value: values.floatValue,
+          },
+        });
+      }}
       suffix="€"
     />
   );
