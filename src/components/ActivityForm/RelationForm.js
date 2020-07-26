@@ -7,7 +7,7 @@ import {
 } from "@material-ui/core";
 
 import SelectInput from "./SelectInput";
-import { API_URL } from "../../../constant";
+import { API_URL } from "../../constant";
 import MultipleSelectInput from "./MultipleSelectInput";
 import NumberFormat from "react-number-format";
 import PropTypes from "prop-types";
@@ -90,15 +90,29 @@ export default function RelationForm({ activity, setActivity }) {
   };
 
   const onChangeAmount = event => {
-    const { value } = event.target;
+    console.log(event.target);
+    const { value, name } = event.target;
+    let prices = [...activity.prices];
+    let price = { ...prices[0] };
+    price[name] = value;
+    prices[0] = price;
     setActivity(prevState => ({
       ...prevState,
-      price: {
-        amount: value,
-      },
+      prices: prices,
     }));
   };
 
+  const onChangeQuantity = event => {
+    const { value, name } = event.target;
+    let prices = [...activity.prices];
+    let price = { ...prices[0] };
+    price[name].id = value;
+    prices[0] = price;
+    setActivity(prevState => ({
+      ...prevState,
+      prices: prices,
+    }));
+  };
   return (
     <>
       <Card>
@@ -139,8 +153,8 @@ export default function RelationForm({ activity, setActivity }) {
                 input_label="Quantité"
                 select_id="_select_quantity"
                 select_name="quantity"
-                onChange={onChange}
-                value={activity.quantity.id}
+                onChange={onChangeQuantity}
+                value={activity.prices[0].quantity.id}
                 items={quantities}
                 item_label_key="label"
                 item_value_key="id"
@@ -155,7 +169,7 @@ export default function RelationForm({ activity, setActivity }) {
                 onChange={onChangeAmount}
                 placeholder="Montant"
                 required={true}
-                value={activity.price.amount}
+                value={activity.prices[0].amount}
                 variant="outlined"
                 InputProps={{
                   inputComponent: NumberFormatCustom,

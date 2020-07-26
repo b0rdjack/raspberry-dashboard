@@ -13,7 +13,7 @@ import {
 
 import Input from "./Input";
 import TimeInput from "./TimeInput";
-import { API_URL } from "../../../constant";
+import { API_URL } from "../../constant";
 import SelectInput from "./SelectInput";
 
 export default function MainForm({ activity, setActivity }) {
