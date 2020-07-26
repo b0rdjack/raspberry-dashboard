@@ -4,8 +4,8 @@ import { Grid, Button, CircularProgress } from "@material-ui/core";
 import { API_URL } from "../../constant";
 
 import PageTitle from "../../components/PageTitle/PageTitle";
-import MainForm from "./components/MainForm";
-import RelationForm from "./components/RelationForm";
+import MainForm from "../../components/ActivityForm/MainForm";
+import RelationForm from "../../components/ActivityForm/RelationForm";
 
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import Snackbar from "@material-ui/core/Snackbar";
@@ -35,14 +35,16 @@ export default function NewActivity() {
       id: "",
       label: "",
     },
-    quantity: {
-      id: "",
-      label: "",
-    },
     tags: [],
-    price: {
-      amount: 0.00,
-    },
+    prices: [
+      {
+        amount: 0.00,
+        quantity: {
+          id: "",
+          label: ""
+        }
+      }
+    ]
   });
 
   const onHandleClick = () => {
@@ -69,7 +71,7 @@ export default function NewActivity() {
         state: activity.state,
         quantity: activity.quantity,
         tags: activity.tags,
-        price: activity.price,
+        prices: activity.prices,
       }),
     })
       .then(response => response.json())

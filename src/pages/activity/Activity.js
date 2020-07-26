@@ -10,23 +10,49 @@ import { API_URL } from "../../constant";
 
 // components
 import PageTitle from "../../components/PageTitle";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import TagCard from "./components/TagCard";
 import InformationCard from "./components/InformationCard";
 import ProfessionalCard from "./components/ProfessionalCard";
 
 export default function Activity() {
+  const history = useHistory();
   const [token, setToken] = useState("");
   const [open, setOpen] = React.useState(false);
   const [message, setMessage] = useState("");
   const [activity, setActivity] = useState({
-    professional: { user: {} },
-    tags: [{}],
-    subcategory: {},
-    state: {},
-    postal_code: {},
-    prices: [{}],
+    name: "",
+    address: "",
+    siren: "",
+    phone_number: "",
+    opening_hours: "07:30",
+    closing_hours: "21:30",
+    average_time_spent: "00:30",
+    disabled_access: "0",
+    postal_code: {
+      id: "",
+      code: "",
+    },
+    subcategory: {
+      id: "",
+      label: "",
+    },
+    state: {
+      id: "",
+      label: "",
+    },
+    tags: [],
+    prices: [
+      {
+        amount: 0.00,
+        quantity: {
+          id: "",
+          label: ""
+        }
+      }
+    ]
   });
+
   const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
 
@@ -181,6 +207,17 @@ export default function Activity() {
             )}
             <Grid item xs={3}>
               {getButton(activity.state.label, activity.id)}
+            </Grid>
+            <Grid item xs={3}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() =>
+                  history.push(activity.id + "/edit")
+                }
+              >
+                Modifier l'activité
+              </Button>
             </Grid>
           </>
         )}
