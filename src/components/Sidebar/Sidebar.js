@@ -2,13 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Drawer, IconButton, List } from "@material-ui/core";
 import {
   Home as HomeIcon,
-  NotificationsNone as NotificationsIcon,
-  FormatSize as TypographyIcon,
-  FilterNone as UIElementsIcon,
-  BorderAll as TableIcon,
-  QuestionAnswer as SupportIcon,
-  LibraryBooks as LibraryIcon,
-  HelpOutline as FAQIcon,
   ArrowBack as ArrowBackIcon,
   List as ListIcon,
 } from "@material-ui/icons";
@@ -21,7 +14,6 @@ import useStyles from "./styles";
 
 // components
 import SidebarLink from "./components/SidebarLink/SidebarLink";
-import Dot from "./components/Dot";
 
 // context
 import {
@@ -34,58 +26,9 @@ const structure = [
   { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
   {
     id: 1,
-    label: "Typography",
-    link: "/app/typography",
-    icon: <TypographyIcon />,
-  },
-  { id: 2, label: "Tables", link: "/app/tables", icon: <TableIcon /> },
-  {
-    id: 3,
-    label: "Notifications",
-    link: "/app/notifications",
-    icon: <NotificationsIcon />,
-  },
-  {
-    id: 4,
     label: "Liste des activitiés",
     link: "/app/activities",
     icon: <ListIcon />,
-  },
-  {
-    id: 5,
-    label: "UI Elements",
-    link: "/app/ui",
-    icon: <UIElementsIcon />,
-    children: [
-      { label: "Icons", link: "/app/ui/icons" },
-      { label: "Charts", link: "/app/ui/charts" },
-      { label: "Maps", link: "/app/ui/maps" },
-    ],
-  },
-  { id: 6, type: "divider" },
-  { id: 7, type: "title", label: "HELP" },
-  { id: 8, label: "Library", link: "", icon: <LibraryIcon /> },
-  { id: 9, label: "Support", link: "", icon: <SupportIcon /> },
-  { id: 10, label: "FAQ", link: "", icon: <FAQIcon /> },
-  { id: 11, type: "divider" },
-  { id: 12, type: "title", label: "PROJECTS" },
-  {
-    id: 13,
-    label: "My recent",
-    link: "",
-    icon: <Dot size="small" color="warning" />,
-  },
-  {
-    id: 14,
-    label: "Starred",
-    link: "",
-    icon: <Dot size="small" color="primary" />,
-  },
-  {
-    id: 15,
-    label: "Background",
-    link: "",
-    icon: <Dot size="small" color="secondary" />,
   },
 ];
 

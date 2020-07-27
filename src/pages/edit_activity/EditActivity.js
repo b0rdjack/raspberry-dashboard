@@ -93,7 +93,6 @@ export default function EditActivity() {
 
   const onHandleClick = () => {
     setIsLoading(true);
-    let token = localStorage.getItem("token");
     fetch(API_URL + "activities/" + id, {
       method: "PUT",
       headers: {
