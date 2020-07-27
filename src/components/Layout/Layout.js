@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, Redirect, withRouter } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import classnames from "classnames";
 
 // styles
@@ -11,19 +11,13 @@ import Sidebar from "../Sidebar";
 
 // pages
 import Dashboard from "../../pages/dashboard";
-import Typography from "../../pages/typography";
-import Notifications from "../../pages/notifications";
-import Maps from "../../pages/maps";
-import Tables from "../../pages/tables";
-import Icons from "../../pages/icons";
-import Charts from "../../pages/charts";
-
-// context
-import { useLayoutState } from "../../context/LayoutContext";
 import Activities from "../../pages/activities/Activities";
 import Activity from "../../pages/activity/Activity";
 import NewActivity from "../../pages/new_activity/NewActivity";
 import EditActivity from "../../pages/edit_activity/EditActivity";
+
+// context
+import { useLayoutState } from "../../context/LayoutContext";
 
 function Layout(props) {
   var classes = useStyles();
@@ -44,9 +38,6 @@ function Layout(props) {
           <div className={classes.fakeToolbar} />
           <Switch>
             <Route path="/app/dashboard" component={Dashboard} />
-            <Route path="/app/typography" component={Typography} />
-            <Route path="/app/tables" component={Tables} />
-            <Route path="/app/notifications" component={Notifications} />
             <Route exact path="/app/activities" component={Activities} />
             <Route exact path="/app/activities/new" component={NewActivity} />
             <Route exact path="/app/activities/:id" component={Activity} />
@@ -55,14 +46,6 @@ function Layout(props) {
               path="/app/activities/:id/edit"
               component={EditActivity}
             />
-            <Route
-              exact
-              path="/app/ui"
-              render={() => <Redirect to="/app/ui/icons" />}
-            />
-            <Route path="/app/ui/maps" component={Maps} />
-            <Route path="/app/ui/icons" component={Icons} />
-            <Route path="/app/ui/charts" component={Charts} />
           </Switch>
         </div>
       </>
