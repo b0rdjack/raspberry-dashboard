@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid } from "@material-ui/core";
-import { useTheme } from "@material-ui/styles";
-import { LineChart, Line } from "recharts";
+import { Grid, CircularProgress } from "@material-ui/core";
 
 // styles
 import useStyles from "./styles";
@@ -15,7 +13,6 @@ import MUIDataTable from "mui-datatables";
 
 export default function Dashboard(props) {
   const classes = useStyles();
-  const theme = useTheme();
 
   const [customers, setCustomers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -96,19 +93,27 @@ export default function Dashboard(props) {
             className={classes.card}
           >
             <div className={classes.visitsNumberContainer}>
-              <Typography size="xl" weight="medium">
-                {customers.length}
-              </Typography>
+              {isLoading ? (
+                <CircularProgress size={52} />
+              ) : (
+                <Typography size="xl" weight="medium">
+                  {customers.length}
+                </Typography>
+              )}
             </div>
           </Widget>
         </Grid>
         <Grid item xs={10}>
-          <MUIDataTable
-            title="Utilisateurs"
-            data={customers}
-            columns={columns}
-            options={options}
-          />
+          {isLoading ? (
+            <CircularProgress size={52} />
+          ) : (
+            <MUIDataTable
+              title="Utilisateurs"
+              data={customers}
+              columns={columns}
+              options={options}
+            />
+          )}
         </Grid>
       </Grid>
     </>
