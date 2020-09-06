@@ -1,1 +1,1 @@
-export const API_URL ='http://52.47.121.145/api/'
+export const API_URL ='https://goyave.xyz/api/'
