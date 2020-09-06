@@ -15,11 +15,13 @@ export default function Dashboard(props) {
   const classes = useStyles();
 
   const [customers, setCustomers] = useState([]);
+  const [trips, setTrips] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     let token = localStorage.getItem("token");
     setIsLoading(true);
+    // Get customers
     fetch(API_URL + "customers", {
       method: "GET",
       headers: {
@@ -29,10 +31,27 @@ export default function Dashboard(props) {
     })
       .then(response => response.json())
       .then(response => {
-        setIsLoading(false);
         setCustomers(cleanArray(response.customers));
       })
       .catch(e => {
+        console.error(e);
+      });
+
+    // Get trips
+    fetch(API_URL + "trips", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        Authorization: token,
+      },
+    })
+      .then(response => response.json())
+      .then(response => {
+        setIsLoading(false);
+        setTrips(response.trips);
+      })
+      .catch(e => {
+        setIsLoading(false);
         console.error(e);
       });
   }, []);
@@ -98,6 +117,24 @@ export default function Dashboard(props) {
               ) : (
                 <Typography size="xl" weight="medium">
                   {customers.length}
+                </Typography>
+              )}
+            </div>
+          </Widget>
+        </Grid>
+        <Grid item lg={3} md={4} sm={6} xs={12}>
+          <Widget
+            title="Nombres total de parcours effectués"
+            upperTitle
+            bodyClass={classes.fullHeightBody}
+            className={classes.card}
+          >
+            <div className={classes.visitsNumberContainer}>
+              {isLoading ? (
+                <CircularProgress size={52} />
+              ) : (
+                <Typography size="xl" weight="medium">
+                  {trips.length}
                 </Typography>
               )}
             </div>
