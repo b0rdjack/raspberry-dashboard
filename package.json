@@ -1,6 +1,6 @@
 {
-  "name": "react-material-admin",
-  "version": "1.1.0",
+  "name": "raspberry-dashboard",
+  "version": "0.0.1",
   "private": true,
   "resolutions": {
     "websocket-extensions": "^0.1.4"
