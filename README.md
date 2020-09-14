@@ -1,106 +1,75 @@
-# React Material Admin — Material-UI Dashboard Template
+<div align="center">
+  <img alt="react" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" width="300">
+  <h1>Raspberry dashboard 🍇</h1>
 
-Built with [React](https://facebook.github.io/react/), [Material-UI](https://material-ui.com), [React Router](https://reacttraining.com/react-router/).
-**No jQuery and Bootstrap!**
+  <p>Administrator dashboard made with ReactJs, based on a <a href="https://github.com/flatlogic/react-material-admin" target="_blank">template</a>.</p>
+</div>
 
-**This version uses React 16.8.6, React Router v5, MaterialUI v4, built with React Hooks and React Context (No Redux)**
+## Resources 📝
 
-[Demo](https://flatlogic.com/admin-dashboards/react-material-admin/demo). Use any credentials to log in.
+- [ReactJs](https://fr.reactjs.org/)
+- [Material-UI](https://material-ui.com/)
 
-[![image](https://user-images.githubusercontent.com/24964748/55800639-df780300-5adc-11e9-84b7-7c2437088516.png)](https://flatlogic.com/admin-dashboards/react-material-admin/demo)
+I'd highly recommend reading through some of the ReactJs and Material-UI documentation.
 
-## Full Version
+## Project 🚧
 
-This is a limited version of [**Full React Material Admin**](https://flatlogic.com/templates/react-material-admin-full/demo) with more components, pages and theme support.
+This dashboard application is part of a bigger project named _Goyave_. _Govaye_ intends to generates journeys based on the user's likings. The journey are generated according multiple parameters: Localisation 📍, Time 🕑, Budget 💰 and Activity category 📁.
 
-## Features
+## Dashboard Actions ⚙️
 
-- React (**16.8.6**)
-- React Hooks
-- React Context
-- **No jQuery and Bootstrap!**
-- Mobile friendly layout (responsive)
-- Create-react-app under the hood
-- React Router v5
-- Material-UI v4
-- Modular Architecture
-- CSS-in-JS styles
-- Webpack build
-- Stylish, clean, responsive layout
-- Authentication
+With this dashboard, administrators can:
 
-## Pages
+- SignIn
+- Manage the activities (CRUD)
+- View a list of all the users
+- View the latest journeys made by the users
 
-We have implemented some basic pages, so you can see our template in action.
+## Requirements 📄
 
-- Dashboard
-- Typography
-- Tables
-- Notifications
-- Charts
-- Icons
-- Maps
-- Login
-- Error
+To use this web application you will need ReacJs.
 
-## Quick Start
+### Node
 
-#### 1. Get the latest version
+- #### Node installation on Windows
 
-You can start by cloning the latest version of React Dashboard on your
-local machine by running:
+  Just go on [official Node.js website](https://nodejs.org/) and download the installer.
+  Also, be sure to have `git` available in your PATH, `npm` might need it (You can find git [here](https://git-scm.com/)).
 
-```shell
-$ git clone https://github.com/flatlogic/react-material-admin.git MyApp
-$ cd MyApp
-```
+- #### Node installation on Ubuntu
 
-#### 2. Run `yarn install`
+  You can install nodejs and npm easily with apt install, just run the following commands.
 
-This will install both run-time project dependencies and developer tools listed
-in [package.json](package.json) file.
+      $ sudo apt install nodejs
+      $ sudo apt install npm
 
-#### 3. Run `yarn start`
+- #### Other Operating Systems
+  You can find more information about the installation on the [official Node.js website](https://nodejs.org/) and the [official NPM website](https://npmjs.org/).
 
-Runs the app in the development mode.
+If the installation was successful, you should be able to run the following command.
 
-Open http://localhost:3000 to view it in the browser. Whenever you modify any of the source files inside the `/src` folder,
-the module bundler ([Webpack](http://webpack.github.io/)) will recompile the
-app on the fly and refresh all the connected browsers.
+    $ node --version
+    v10.14.2
 
-#### 4. Run `yarn build`
+    $ npm --version
+    6.4.1
 
-Builds the app for production to the build folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
+If you need to update `npm`, you can make it using `npm`! Cool right? After running the following command, just open again the command line and be happy.
 
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
+    $ npm install npm -g
 
-## Support
+## Install 📥
 
-For any additional information please refer to [Flatlogic homepage](https://flatlogic.com).
+    $ git clone https://github.com/AyazBulls/raspberry-dashboard.git
+    $ cd raspberry-dashboard
+    $ npm install
 
-## How can I support developers?
+## Configure app 🔧
 
-- Star our GitHub repo :star:
-- [Tweet about it](https://twitter.com/intent/tweet?text=Amazing%20dashboard%20built%20with%20NodeJS,%20React%20and%20Bootstrap!&url=https://github.com/flatlogic/react-material-template&via=flatlogic).
-- Create pull requests, submit bugs, suggest new features or documentation updates :wrench:
-- Follow [@flatlogic on Twitter](https://twitter.com/flatlogic).
-- Subscribe to Flatlogic newsletter at [flatlogic.com](https://flatlogic.com/)
-- Like our page on [Facebook](https://www.facebook.com/flatlogic/) :thumbsup:
+Open `constant.js` then edit it with your settings. You will need:
 
-## More from Flatlogic
+- API_URL: URL of the [API](https://github.com/AyazBulls/api-mango.git)
 
-- [React Native Starter](https://github.com/flatlogic/react-native-starter) - 🚀 A powerful react native starter template that bootstraps development of your mobile application
-- [Sing App](https://github.com/flatlogic/sing-app) - 💥 Free and open-source admin dashboard template built with Bootstrap 4
-- [Awesome Bootstrap Checkboxes & Radios](https://github.com/flatlogic/awesome-bootstrap-checkbox) - ✅ Pure css way to make inputs look prettier
-- [React Dashboard](https://github.com/flatlogic/react-dashboard) - 🔥 React Dashboard - isomorphic admin dashboard template with GraphQL
-- [Light Blue Dashboard](https://github.com/flatlogic/light-blue-dashboard) - 💦 Free and open-source admin dashboard template built with Bootstrap
+## Running the project 🚀
 
-## Premium themes
-
-Looking for premium themes and templates? Check out more [admin dashboard templates at flatlogic.com](https://flatlogic.com/admin-dashboards).
-
-## License
-
-[MIT](https://github.com/flatlogic/react-material-dashboard/blob/master/LICENSE.txt).
+    $ npm start
