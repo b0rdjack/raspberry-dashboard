@@ -60,7 +60,7 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 
 ## Install 📥
 
-    $ git clone https://github.com/AyazBulls/raspberry-dashboard.git
+    $ git clone https://github.com/b0rdjack/raspberry-dashboard.git
     $ cd raspberry-dashboard
     $ npm install
 
@@ -68,7 +68,7 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 
 Open `constant.js` then edit it with your settings. You will need:
 
-- API_URL: URL of the [API](https://github.com/AyazBulls/api-mango.git)
+- API_URL: URL of the [API](https://github.com/b0rdjack/api-mango.git)
 
 ## Running the project 🚀
 
